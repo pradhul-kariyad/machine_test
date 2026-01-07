@@ -14,7 +14,7 @@ class StreakPage extends GetView<StreakController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.streakBg,
+      backgroundColor: const Color.fromARGB(255, 76, 221, 240),
       body: Obx(() {
         if (controller.isLoading.value) {
           return const Center(child: CircularProgressIndicator());
@@ -47,13 +47,11 @@ class StreakPage extends GetView<StreakController> {
             _star(top: 150, right: 50),
             _star(bottom: 120, left: 30),
             _star(bottom: 200, right: 40),
-
             Positioned.fill(
               child: CustomPaint(
                 painter: _DottedPathPainter(count: days.length),
               ),
             ),
-
             SingleChildScrollView(
               padding: EdgeInsets.symmetric(vertical: 40.h),
               child: Column(
@@ -74,7 +72,6 @@ class StreakPage extends GetView<StreakController> {
                             child: _buildStreakCircle(day),
                           ),
                         ),
-
                         if (day.isCurrent == true && day.module != null)
                           Positioned(
                             left: isLeft ? null : 80.w,
@@ -147,7 +144,7 @@ class StreakPage extends GetView<StreakController> {
               color: completed ? Colors.white : AppColors.primary,
             ),
           ),
-          if (completed) Icon(Icons.check, color: Colors.white, size: 16.sp),
+          // if (completed) Icon(Icons.check, color: Colors.white, size: 16.sp),
         ],
       ),
     );

@@ -154,7 +154,7 @@ class VideoController extends GetxController {
   void onVideoTap(VideoItem video) async {
     if (video.isLocked) {
       Get.snackbar(
-        '🔒 Locked',
+        'Locked',
         'Complete previous videos to unlock this one',
         snackPosition: SnackPosition.BOTTOM,
       );

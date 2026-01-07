@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class SectionTitle extends StatelessWidget {
   final String title;
@@ -11,9 +12,10 @@ class SectionTitle extends StatelessWidget {
       padding: EdgeInsets.symmetric(vertical: 12.h),
       child: Text(
         title,
-        style: TextStyle(
+        style: GoogleFonts.plusJakartaSans(
           fontSize: 18.sp,
-          fontWeight: FontWeight.bold,
+          fontWeight: FontWeight.w700,
+          color: Colors.black,
         ),
       ),
     );

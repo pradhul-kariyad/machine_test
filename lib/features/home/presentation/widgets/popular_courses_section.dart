@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:machine_test/core/theme/app_colors.dart';
 import '../../data/models/home_model.dart';
 import '../../../videos/presentation/pages/videos_page.dart';
@@ -16,6 +18,7 @@ class PopularCoursesSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
+      padding: EdgeInsets.only(top: 2.h),
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -34,7 +37,7 @@ class PopularCoursesSection extends StatelessWidget {
               () => const VideosPage(),
               binding: VideoBinding(),
               arguments: {
-                "course_id": c.id, 
+                "course_id": c.id,
               },
             );
           },
@@ -55,17 +58,23 @@ class PopularCoursesSection extends StatelessWidget {
                     fit: BoxFit.cover,
                   ),
                 ),
-
-                Padding(
-                  padding: const EdgeInsets.all(10),
-                  child: Text(
-                    c.title ?? '',
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(fontWeight: FontWeight.bold),
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: Center(
+                      child: Text(
+                        c.title ?? '',
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        style: GoogleFonts.dmSans(
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w800,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
                   ),
                 ),
-
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10),
                   child: OutlinedButton(
@@ -86,6 +95,9 @@ class PopularCoursesSection extends StatelessWidget {
                       style: TextStyle(color: AppColors.cardBg),
                     ),
                   ),
+                ),
+                SizedBox(
+                  height: 5.h,
                 )
               ],
             ),

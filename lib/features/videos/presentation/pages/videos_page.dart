@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:video_player/video_player.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../controllers/video_controller.dart';
@@ -61,7 +62,6 @@ class VideosPage extends GetView<VideoController> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               _buildVideoPlayer(),
-
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
                 child: Column(
@@ -99,7 +99,6 @@ class VideosPage extends GetView<VideoController> {
                       ],
                     ),
                     SizedBox(height: 4.h),
-
                     Obx(() {
                       final currentId = controller.currentPlayingVideoId.value;
                       final currentVideo =
@@ -114,17 +113,15 @@ class VideosPage extends GetView<VideoController> {
                       );
                     }),
                     SizedBox(height: 20.h),
-
                     Text(
                       section?.title ?? 'Meditation Journey',
-                      style: TextStyle(
+                      style: GoogleFonts.poppins(
                         fontSize: 20.sp,
-                        fontWeight: FontWeight.bold,
+                        fontWeight: FontWeight.w700,
                         color: Colors.black,
                       ),
                     ),
                     SizedBox(height: 16.h),
-
                     ...List.generate(videos.length, (index) {
                       final video = videos[index];
                       return _buildVideoListItem(video, index);
@@ -171,7 +168,6 @@ class VideosPage extends GetView<VideoController> {
                 child: VideoPlayer(player),
               ),
             ),
-
             Positioned.fill(
               child: GestureDetector(
                 onTap: () {
@@ -203,7 +199,6 @@ class VideosPage extends GetView<VideoController> {
                 ),
               ),
             ),
-
             Positioned(
               left: 0,
               right: 0,
@@ -251,7 +246,6 @@ class VideosPage extends GetView<VideoController> {
                         ),
                       );
                     }),
-
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 4.w),
                       child: Row(
@@ -353,10 +347,13 @@ class VideosPage extends GetView<VideoController> {
               overflow: TextOverflow.ellipsis,
             ),
           ),
-          trailing: Icon(
-            Icons.chevron_right,
-            color: isLocked ? Colors.grey[400] : Colors.black54,
-            size: 24.sp,
+          trailing: CircleAvatar(
+            backgroundColor: const Color.fromARGB(255, 243, 240, 240),
+            child: Icon(
+              Icons.play_arrow,
+              color: isLocked ? Colors.grey[400] : Colors.black,
+              size: 24.sp,
+            ),
           ),
           onTap: () => controller.onVideoTap(video),
         ),

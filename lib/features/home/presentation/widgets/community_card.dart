@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:machine_test/core/constants/image_path.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../data/models/home_model.dart';
 
@@ -15,37 +17,36 @@ class CommunityCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(16.r),
-        border: Border.all(color: AppColors.primary.withOpacity(0.3)),
+        border: Border.all(color: Colors.white),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             children: [
-              Container(
-                width: 50.w,
-                height: 50.h,
-                decoration: BoxDecoration(
-                  color: AppColors.streakBg,
-                  borderRadius: BorderRadius.circular(12.r),
-                ),
-                child:
-                    Icon(Icons.people, color: AppColors.primary, size: 28.sp),
+              CircleAvatar(
+                backgroundImage: AssetImage(ImagesRes.img7),
+                radius: 20.r,
               ),
               SizedBox(width: 12.w),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(community?.name ?? 'Wellness Community',
-                        style: TextStyle(
-                            fontSize: 16.sp,
-                            fontWeight: FontWeight.bold,
-                            color: AppColors.textDark)),
                     Text(
-                      '${community?.activeMembers ?? 0} members',
-                      style: TextStyle(
-                          fontSize: 12.sp, color: AppColors.textLight),
+                      community?.name ?? 'General Community',
+                      style: GoogleFonts.poppins(
+                        fontSize: 14.sp,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.black,
+                      ),
+                    ),
+                    Text(
+                      '${community?.activeMembers ?? 0} active members',
+                      style: GoogleFonts.poppins(
+                        fontSize: 12.sp,
+                        color: AppColors.textLight,
+                      ),
                     ),
                   ],
                 ),
@@ -55,20 +56,86 @@ class CommunityCard extends StatelessWidget {
           SizedBox(height: 12.h),
           Text(
             community?.description ??
-                'Join our community to share experiences, tips, and support each other on the wellness journey.',
-            style: TextStyle(
-                fontSize: 14.sp, color: AppColors.textLight, height: 1.5),
+                'Connect with learners across all courses. Share experiences, ask questions, and grow together in your learning journey.',
+            style: GoogleFonts.poppins(
+              fontSize: 12.sp,
+              fontWeight: FontWeight.w500,
+              color: AppColors.textLight,
+            ),
           ),
           SizedBox(height: 12.h),
-          SizedBox(
-            width: double.infinity,
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: AppColors.streakBg
+          InkWell(
+            onTap: () {},
+            child: Container(
+              width: double.infinity,
+              padding: EdgeInsets.symmetric(vertical: 10.h),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8.r),
+                color: const Color(0xffF0F7FF),
               ),
-              onPressed: () {},
-              child:  Text('Join Discussion',style: TextStyle(color: AppColors.primary),),
+              child: Center(
+                child: Text(
+                  'Join Discussion',
+                  style: GoogleFonts.poppins(
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.w600,
+                    color: AppColors.primary,
+                  ),
+                ),
+              ),
             ),
+          ),
+          SizedBox(height: 12.h),
+          Row(
+            children: [
+              SizedBox(
+                width: 70.w,
+                height: 28.h,
+                child: Stack(
+                  children: [
+                    Positioned(
+                      left: 0,
+                      child: CircleAvatar(
+                        radius: 13.r,
+                        backgroundImage: AssetImage(ImagesRes.img1),
+                      ),
+                    ),
+                    Positioned(
+                      left: 20.w,
+                      child: CircleAvatar(
+                        radius: 13.r,
+                        backgroundImage: AssetImage(ImagesRes.img2),
+                      ),
+                    ),
+                    Positioned(
+                      left: 40.w,
+                      child: CircleAvatar(
+                        radius: 13.r,
+                        backgroundImage: AssetImage(ImagesRes.img1),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(width: 8.w),
+              Text(
+                '12 recent posts',
+                style: GoogleFonts.poppins(
+                  fontSize: 12.sp,
+                  fontWeight: FontWeight.w500,
+                  color: Colors.grey,
+                ),
+              ),
+              const Spacer(),
+              Text(
+                'Active now',
+                style: GoogleFonts.poppins(
+                  fontSize: 12.sp,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.green,
+                ),
+              ),
+            ],
           ),
         ],
       ),
